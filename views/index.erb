@@ -1,0 +1,18 @@
+<form action="/stores" method="post">
+  <label for="name">Assign a name to your Store:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit" id="addList">Add Store</button>
+</form>
+
+
+<% if @stores.any?() %>
+
+    <ul>
+      <% @stores.each() do |store| %>
+        <li><a href="/stores/<%= store.id()%>"><%= store.name() %></a> </li>
+      <% end %>
+    </ul>
+<% else %>
+<p>There are no stores yet!</p>
+<% end %>
