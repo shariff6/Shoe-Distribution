@@ -35,3 +35,24 @@
 <% else %>
 <p>There are no stores yet!</p>
 <% end %>
+
+<h2>Add brands to a store</h2>
+
+
+<form action="/brands" method="post" class = "form-inline">
+  <label for="store_id">Select a Store</label>
+  <select id='store_id' name='store_id' type='text' class="form-control" style="width:100px">
+    <% @stores.each() do |store| %>
+      <option value="<%= store.id()%>"> <%= store.name() %> </option>
+    <% end %>
+  </select>
+
+  <label for="name">Select a Brand:</label>
+  <select id='brand_id' name='brand_id' type='text' class="form-control" style="width:100px">
+    <% @brands.each() do |brand| %>
+      <option value="<%= brand.id()%>"> <%= brand.name() %> </option>
+    <% end %>
+  </select>
+
+  <button type="submit">Add brand</button>
+</form>
