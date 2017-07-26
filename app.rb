@@ -78,3 +78,12 @@ delete("/brands/:id") do
     erb(:success)
   end
 end
+
+post("/brands")do
+brand_id = params.fetch("brand_id")
+store_id = params.fetch("store_id")
+@distribution = Distribution.new("brand_id"=>brand_id, "store_id"=>store_id)
+if @distribution.save()
+  erb(:success)
+end
+end
