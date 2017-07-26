@@ -1,3 +1,9 @@
 <div class="container">
   <a href="/brands/<%= @brand.id() %>/edit">Edit This Brand</a>
 </div>
+
+<ul>
+  <% @brand.stores.each do |s| %>
+  <li><%= s.name() %></li>
+  <% end %>
+</ul>
