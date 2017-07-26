@@ -1,3 +1,11 @@
 <div class="container">
   <a href="/stores/<%= @store.id() %>/edit">Edit This Storet</a>
 </div>
+
+<h1>Brands</h1>
+
+<ul>
+  <% @store.brands.each do |s| %>
+  <li><%= s.name() %></li>
+  <% end %>
+</ul>
