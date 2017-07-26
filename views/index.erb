@@ -1,4 +1,4 @@
-<form action="/stores" method="post">
+<form action="/stores/new" method="post">
   <label for="name">Assign a name to your Store:</label>
   <input id="name" name="name" type="text">
 
@@ -6,11 +6,30 @@
 </form>
 
 
+<form action="/brands/new" method="post" class = "form-inline">
+  <label for="name">Name of the brand:</label>
+  <input id="name" name="name" type="text" class= "form-control">
+
+  <button type="submit" class="btn btn-default">Add brand</button>
+</form>
+<h1>Stores</h1>
 <% if @stores.any?() %>
 
     <ul>
       <% @stores.each() do |store| %>
         <li><a href="/stores/<%= store.id()%>"><%= store.name() %></a> </li>
+      <% end %>
+    </ul>
+<% else %>
+<p>There are no stores yet!</p>
+<% end %>
+
+<h2>Brands</h2>
+<% if @brands.any?() %>
+
+    <ul>
+      <% @brands.each() do |brand| %>
+        <li><a href="/brands/<%= brand.id()%>"><%= brand.name() %></a> </li>
       <% end %>
     </ul>
 <% else %>
