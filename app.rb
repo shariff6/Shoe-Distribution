@@ -34,7 +34,7 @@ post("/brands/new") do
 end
 get("/brands/:id") do
   @brand = Brand.find(params.fetch("id").to_i())
-  erb(:store)
+  erb(:brand)
 end
 get("/stores/:id/edit")do
   @store = Store.find(params.fetch("id").to_i())
@@ -54,6 +54,27 @@ delete("/stores/:id") do
   @store = Store.find(params.fetch("id").to_i())
   @store = Store.all()
   if  @store.delete()
+    erb(:success)
+  end
+end
+get("/brands/:id/edit")do
+  @brand = Brand.find(params.fetch("id").to_i())
+  erb(:brand_edit)
+end
+patch("/brands/:id") do
+  @brands = Brand.all()
+  name = params.fetch("name")
+  @brand = Brand.find(params.fetch("id").to_i())
+  if   @brand.update("name"=>name)
+    erb(:success)
+  else
+    erb(:error)
+  end
+end
+delete("/brands/:id") do
+  @brand = Brand.find(params.fetch("id").to_i())
+  @brands = Brand.all()
+  if  @brand.delete()
     erb(:success)
   end
 end
